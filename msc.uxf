@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>189</x>
+      <y>0</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>netcom client
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>427</x>
+      <y>0</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>netcom
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>14</y>
+      <w>21</w>
+      <h>581</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;810.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>14</y>
+      <w>21</w>
+      <h>714</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>28</y>
+      <w>259</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+&lt;&lt;SSL/TCP connection establishment&gt;&gt;
+</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>462</x>
+      <y>42</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>476</x>
+      <y>42</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>accept client
+create client ID
+generate one time password
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>77</y>
+      <w>259</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+&lt;&lt;client ID + OTP over the SSL/TCP channel&gt;&gt;
+MESSAGE_NETCOM_CONNECT</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>126</y>
+      <w>259</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+&lt;&lt;client ID + OTP over unsecure UDP&gt;&gt;
+MESSAGE_NETCOM_CONNECT</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>462</x>
+      <y>140</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>476</x>
+      <y>140</y>
+      <w>175</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>authenticate client
+generate client key
+(used to encrypt camera frames)
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>175</y>
+      <w>259</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+&lt;&lt;client key over the SSL/TCP channel&gt;&gt;
+MESSAGE_NETCOM_KEY
+</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>665</x>
+      <y>0</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>engine
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>14</y>
+      <w>21</w>
+      <h>714</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>182</y>
+      <w>259</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;client ID and SSL context&gt;&gt;
+MESSAGE_NETCOM_CLIENT_ALIVE</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>616</x>
+      <y>224</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>client uplink
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>644</x>
+      <y>238</y>
+      <w>21</w>
+      <h>413</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;570.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>700</x>
+      <y>196</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>714</x>
+      <y>196</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>create client uplink
+(new thread)
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>903</x>
+      <y>0</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>chmgr
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>931</x>
+      <y>14</y>
+      <w>21</w>
+      <h>714</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>231</y>
+      <w>259</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;update chassis mgr&gt;&gt;
+MESSAGE_USER_UP</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>938</x>
+      <y>245</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>952</x>
+      <y>245</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>++clients
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>315</y>
+      <w>259</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;messages from user over SSL/TCP channel&gt;&gt;
+MESSAGE_HEARTBEAT
+MESSAGE_MOVE
+NESSAGE_SENSOR_REQUEST
+MESSAGE_CAMERA_REQUEST
+MESSAGE_SEARCH_REMOTE
+MESSAGE_TERMINATE</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>322</y>
+      <w>259</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;forward messages&gt;&gt;</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1141</x>
+      <y>0</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>rcmgr
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1169</x>
+      <y>14</y>
+      <w>21</w>
+      <h>714</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>329</y>
+      <w>497</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+                        &lt;&lt;forward messages&gt;&gt;
+                         MESSAGE_SEARCH_REMOTE</panel_attributes>
+    <additional_attributes>690.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>357</y>
+      <w>259</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;forward messages&gt;&gt;
+MESSAGE_HEARTBEAT
+MESSAGE_MOVE
+NESSAGE_SENSOR_REQUEST
+</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1176</x>
+      <y>343</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1190</x>
+      <y>343</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>search Wii
+controllers
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>938</x>
+      <y>371</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>952</x>
+      <y>371</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>update heartbeat timer
+move robot/camera
+collect sensor data
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>644</x>
+      <y>406</y>
+      <w>308</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;sensor data&gt;&gt;
+MESSAGE_SENSOR_DATA</panel_attributes>
+    <additional_attributes>10.0;20.0;420.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>413</y>
+      <w>448</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;forward message&gt;&gt;
+MESSAGE_SENSOR_DATA</panel_attributes>
+    <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>602</x>
+      <y>441</y>
+      <w>154</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;forward messages&gt;&gt;
+MESSAGE_CAMERA_REQUEST</panel_attributes>
+    <additional_attributes>70.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>455</y>
+      <w>448</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;send encrypted camera frames until client requests to stop&gt;&gt;
+MESSAGE_CAMERA_FRAME</panel_attributes>
+    <additional_attributes>10.0;20.0;620.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>217</x>
+      <y>518</y>
+      <w>259</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+&lt;&lt;client terminates&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;350.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>217</x>
+      <y>581</y>
+      <w>14</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>type=termination</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>462</x>
+      <y>532</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>476</x>
+      <y>532</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>delete client
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>567</y>
+      <w>259</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;client ID&gt;&gt;
+MESSAGE_NETCOM_CLIENT_DEAD</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>616</y>
+      <w>259</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;update chassis mgr&gt;&gt;
+MESSAGE_USER_DOWN</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>938</x>
+      <y>630</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>952</x>
+      <y>630</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>- -clients
+stop robot if it's the last
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>700</x>
+      <y>581</y>
+      <w>14</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>714</x>
+      <y>581</y>
+      <w>154</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>delete client uplink
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>644</x>
+      <y>637</y>
+      <w>14</w>
+      <h>14</h>
+    </coordinates>
+    <panel_attributes>type=termination</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>469</y>
+      <w>497</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;messages from Wii controller user&gt;&gt;
+MESSAGE_MOVE
+</panel_attributes>
+    <additional_attributes>10.0;20.0;690.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>931</x>
+      <y>441</y>
+      <w>259</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;periodic heartbeats&gt;&gt;
+MESSAGE_HEARTBEAT</panel_attributes>
+    <additional_attributes>10.0;20.0;350.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>336</y>
+      <w>14</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>bg=gray
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -3,7 +3,7 @@
  *
  * sentry.cc
  *
- * Project sentry
+ * Home sentry robot main file
  *
  * Currently the following (optional) command line args are supported:
  *   -v                verbose debug level
@@ -13,7 +13,19 @@
  *   -s                log messages to syslog
  *
  * Copyright (c) 2017 Zoltan Toth <ztoth AT thetothfamily DOT net>
- * All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  *------------------------------------------------------------------------------
  */
@@ -23,6 +35,8 @@
 #include <csignal>
 #include <pthread.h>
 
+#include "engine.h"
+#include "message.h"
 #include "framework.h"
 
 /**
@@ -31,23 +45,30 @@
 void*
 signal_thread (void *arg)
 {
-    sigset_t *sigset = (sigset_t*)arg;
+    sentry::MessageQueue* const engine_queue =
+        reinterpret_cast<sentry::MessageQueue*>(arg);
+    sigset_t sigset;
     int signal;
 
     pthread_setname_np(pthread_self(), "signal handler");
     pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+    sigfillset(&sigset);
 
     /* wait for asynchronous OS signals */
     while (true) {
-        if (sigwait(sigset, &signal) != 0) {
+        if (sigwait(&sigset, &signal) != 0) {
             dbug(DEBUG_LEVEL_ERROR, DEBUG_TYPE_FRAMEWORK,
                  "sigwait() returned error");
             break;
         }
 
-        dbug(DEBUG_LEVEL_NORMAL, DEBUG_TYPE_FRAMEWORK,
-             "signal " << signal << " received, exiting");
-        break;
+        /* catch CTRL-C */
+        if (SIGINT == signal) {
+            dbug(DEBUG_LEVEL_NORMAL, DEBUG_TYPE_FRAMEWORK,
+                 "SIGINT received, exiting");
+            engine_queue->push_msg(MESSAGE_TERMINATE);
+            break;
+        }
     }
 
     pthread_exit(NULL);
@@ -59,6 +80,13 @@ signal_thread (void *arg)
 int
 main (int argc, char *argv[])
 {
+    /* GPL notice */
+    std::cout << "Sentry home monitoring robot - server program" << std::endl;
+    std::cout << "Copyright (c) 2017 Zoltan Toth <ztoth AT thetothfamily DOT net>" << std::endl;
+    std::cout << "This program comes with ABSOLUTELY NO WARRANTY; This is free software," << std::endl;
+    std::cout << "and you are welcome to redistribute it under certain conditions;" << std::endl;
+    std::cout << "Please refer to COPYING for details." << std::endl << std::endl;
+
     /* init local and global variables */
     std::streambuf *cout = std::cout.rdbuf();
     std::ofstream logfile;
@@ -132,21 +160,25 @@ main (int argc, char *argv[])
         return RC_MAIN_SIGNAL_ERROR;
     }
 
+    /* create the engine object */
+    sentry::Engine *engine = new sentry::Engine();
+
     /* spawn a signal handler thread to catch asynchronous signals from the OS */
     pthread_t signal_thrd;
-    if (pthread_create(&signal_thrd, 0, signal_thread, (void*)&sigset) != 0) {
+    if (pthread_create(&signal_thrd, 0, signal_thread,
+                       engine->get_engine_queue()) != 0) {
         dbug(DEBUG_LEVEL_ERROR, DEBUG_TYPE_FRAMEWORK,
              "unable to start signal handler thread");
         return RC_MAIN_SIGNAL_ERROR;
     }
 
-
-    /* TODO: do your stuff here */
-
+    /* loop in the sentry message processing function */
+    return_code_en rc = engine->start();
 
     /* cleanup */
     pthread_cancel(signal_thrd);
     pthread_join(signal_thrd, NULL);
+    delete engine;
 
     /* close logfile if we used one */
     if (logfile.is_open()) {
@@ -154,5 +186,5 @@ main (int argc, char *argv[])
         logfile.close();
     }
 
-    return 0;
+    return rc;
 }

@@ -6,7 +6,19 @@
  * Simple C++ project framework for small projects and quick prototyping
  *
  * Copyright (c) 2017 Zoltan Toth <ztoth AT thetothfamily DOT net>
- * All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  *
  *------------------------------------------------------------------------------
  */
@@ -28,13 +40,32 @@ typedef enum return_code {
     RC_MAIN_SIGNAL_ERROR,
     RC_MAIN_LOGFILE_ERROR,
     RC_CONFIG_FILE_NOT_FOUND,
-    RC_CONFIG_MISSING_SECTION
+    RC_CONFIG_MISSING_SECTION,
+    RC_WORKER_THREAD_ERROR,
+    RC_CHMGR_THREAD_ERROR,
+    RC_CHMGR_PORT_ERROR,
+    RC_CHMGR_READ_ERROR,
+    RC_CHMGR_WRITE_ERROR,
+    RC_NETCOM_SSL_ERROR,
+    RC_NETCOM_SOCKET_ERROR,
+    RC_NETCOM_INVALID_CERTIFICATE,
+    RC_NETCOM_INVALID_KEY,
+    RC_NETCOM_KEY_CERT_MISMATCH,
+    RC_NETCOM_CLIENT_CA_ERR
 } return_code_en;
 
 /** debug types */
 typedef enum debug_type {
     DEBUG_TYPE_INVALID = 0,
-    DEBUG_TYPE_FRAMEWORK
+    DEBUG_TYPE_FRAMEWORK,
+    DEBUG_TYPE_ENGINE,
+    DEBUG_TYPE_MESSAGEQUEUE,
+    DEBUG_TYPE_WORKER,
+    DEBUG_TYPE_RCMGR,
+    DEBUG_TYPE_CHMGR,
+    DEBUG_TYPE_NETCOM,
+    DEBUG_TYPE_NETCOM_UPLINK,
+    DEBUG_TYPE_CAMERA
 } debug_type_en;
 
 /** debug levels */
