@@ -1,9 +1,9 @@
 /*
  *------------------------------------------------------------------------------
  *
- * main.cc
+ * sentry.cc
  *
- * Simple C++ project framework for small projects and quick prototyping
+ * Project sentry
  *
  * Currently the following (optional) command line args are supported:
  *   -v                verbose debug level

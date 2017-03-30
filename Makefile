@@ -1,5 +1,5 @@
 # project
-TARGET   = framework
+TARGET   = sentry
 
 # directories
 BINDIR   = bin
@@ -29,9 +29,9 @@ endif
 all release profile: $(BINDIR)/$(TARGET)
 
 # build the application
-$(BINDIR)/$(TARGET): $(OBJDIR)/main.o $(OBJDIR)/framework.o
+$(BINDIR)/$(TARGET): $(OBJDIR)/sentry.o $(OBJDIR)/framework.o
 	$(CC) -o $@ $^ $(LDFLAGS) $(INCLUDES) $(LIBS)
-$(OBJDIR)/main.o: $(SRCDIR)/main.cc $(SRCDIR)/framework.h
+$(OBJDIR)/sentry.o: $(SRCDIR)/sentry.cc $(SRCDIR)/framework.h
 	$(CC) $(FLAGS) -o $@ -c $< $(INCLUDES)
 $(OBJDIR)/framework.o: $(SRCDIR)/framework.cc $(SRCDIR)/framework.h
 	$(CC) $(FLAGS) -o $@ -c $< $(INCLUDES)
